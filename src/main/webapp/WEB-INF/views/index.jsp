@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>index.jsp</title>
+    <link rel="stylesheet" href="/resources/css/bootstrap.css">
 </head>
 <body>
 
