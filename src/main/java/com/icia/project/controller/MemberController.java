@@ -4,7 +4,10 @@ import com.icia.project.dto.MemberDTO;
 import com.icia.project.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class MemberController {
@@ -18,7 +21,7 @@ private MemberService memberService;
     @PostMapping ("/member/save")
     public String save(@ModelAttribute MemberDTO memberDTO){
         boolean saveResult = memberService.save(memberDTO);
-        return "/index";
+        return "/member/login";
     }
 
     @PostMapping("/member/duplicate-check-email")
@@ -35,4 +38,21 @@ private MemberService memberService;
         return userNameDuplicateResult;
     }
 
+    @GetMapping("/member/login")
+    public String loginForm(){
+        return "/member/login";
+    }
+
+    @PostMapping("/member/login")
+    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session, Model model){
+        boolean loginResult = memberService.login(memberDTO);
+        if(loginResult){
+            session.setAttribute("loginEmail",memberDTO.getMemberEmail());
+            model.addAttribute("modelEmail",memberDTO.getMemberEmail());
+            return"/board/main";
+        }else{
+            return"/member/login";
+        }
+
+    }
 }

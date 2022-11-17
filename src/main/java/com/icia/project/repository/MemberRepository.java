@@ -20,4 +20,8 @@ public class MemberRepository {
     public String userNameDuplicateCheck(String memberUserName) {
         return sql.selectOne("Member.userNameDuplicateCheck",memberUserName);
     }
+
+    public MemberDTO login(MemberDTO memberDTO) {
+        return sql.selectOne("Member.login",memberDTO);
+    }
 }

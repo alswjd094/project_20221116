@@ -19,7 +19,7 @@
 <body>
 <div class="container" id="index-form" style="text-align: center">
     <img src="/resources/image/instagram.jpg" width="175px" height="51px" alt="">
-    <form action="/login" method="post" name="loginForm">
+    <form action="/member/login" method="post" name="loginForm">
        <input type="text" name="memberEmail" placeholder="이메일 주소" class="form-control mt-4">
        <input type="password" name="memberPassword" placeholder="비밀번호" class="form-control mt-2">
         <div class="d-grid gap-2 mt-3">
