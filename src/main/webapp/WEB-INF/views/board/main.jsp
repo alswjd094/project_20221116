@@ -11,6 +11,11 @@
     <title>main.jsp</title>
 </head>
 <body>
-
+<button onclick="logoutFn()" class="btn  btn-danger" >로그아웃</button>
 </body>
+<script>
+    const logoutFn = () => {
+        location.href="/member/logout";
+    }
+</script>
 </html>

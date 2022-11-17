@@ -53,6 +53,10 @@ private MemberService memberService;
         }else{
             return"/member/login";
         }
-
+    }
+    @GetMapping("/member/logout")
+    public String logout(HttpSession session){
+        session.invalidate();
+        return"index";
     }
 }
