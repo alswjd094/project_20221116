@@ -11,11 +11,15 @@
     <title>main.jsp</title>
 </head>
 <body>
-<button onclick="logoutFn()" class="btn  btn-danger" >로그아웃</button>
+<button onclick="logoutFn()" class="btn btn-danger" >로그아웃</button>
+<button onclick="writing()" class="btn btn-primary">새 게시물 만들기</button>
 </body>
 <script>
     const logoutFn = () => {
         location.href="/member/logout";
+    }
+    const writing = () => {
+        location.href="/board/writing";
     }
 </script>
 </html>
