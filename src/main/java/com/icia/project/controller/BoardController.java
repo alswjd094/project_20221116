@@ -4,9 +4,14 @@ import com.icia.project.dto.BoardDTO;
 import com.icia.project.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.io.IOException;
+import java.util.List;
 
 @Controller
 public class BoardController {
@@ -15,12 +20,26 @@ public class BoardController {
 
     @GetMapping("/board/writing")
     public String writingForm(){
-        return "/board/writing";
+        return "board/writing";
     }
 
     @PostMapping("/board/writing")
-    public String writing(@ModelAttribute BoardDTO boardDTO){
-        boolean writingResult = boardService.writing(boardDTO);
-        return "/board/main";
+    public String writing(@ModelAttribute BoardDTO boardDTO) throws IOException {
+        boardService.writing(boardDTO);
+        return "redirect:/board/list";
+    }
+    @GetMapping("/board/list")
+    public String list(Model model){
+        List<BoardDTO> boardList = boardService.list();
+        System.out.println("boardList = " + boardList);
+        model.addAttribute("boardList",boardList);
+        return"board/main";
+    }
+    @GetMapping("/board/detail")
+    public String boardFindById(@RequestParam("id")Long id, Model model){
+        BoardDTO boardDTO = boardService.boardFindById(id);
+        System.out.println("boardDTO = " + boardDTO);
+        model.addAttribute("board",boardDTO);
+        return"board/detail";
     }
 }

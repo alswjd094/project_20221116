@@ -21,7 +21,7 @@ private MemberService memberService;
     @PostMapping ("/member/save")
     public String save(@ModelAttribute MemberDTO memberDTO){
         boolean saveResult = memberService.save(memberDTO);
-        return "/member/login";
+        return "member/login";
     }
 
     @PostMapping("/member/duplicate-check-email")
@@ -40,7 +40,7 @@ private MemberService memberService;
 
     @GetMapping("/member/login")
     public String loginForm(){
-        return "/member/login";
+        return "member/login";
     }
 
     @PostMapping("/member/login")
@@ -49,9 +49,9 @@ private MemberService memberService;
         if(loginResult){
             session.setAttribute("loginEmail",memberDTO.getMemberEmail());
             model.addAttribute("modelEmail",memberDTO.getMemberEmail());
-            return"/board/main";
+            return"board/main";
         }else{
-            return"/member/login";
+            return"member/login";
         }
     }
     @GetMapping("/member/logout")
