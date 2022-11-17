@@ -4,7 +4,16 @@
 
 
 <mapper namespace="Member">
-
+<insert id="save" parameterType="member">
+insert into member_table(memberEmail, memberPassword, memberName, memberUserName, memberMobile)
+values (#{memberEmail}, #{memberPassword}, #{memberName}, #{memberUserName}, #{memberMobile})
+</insert>
+    <select id="emailDuplicateCheck" resultType="String" parameterType="member">
+        select memberEmail from member_table where memberEmail = #{memberEmail}
+    </select>
+    <select id="userNameDuplicateCheck" resultType="String" parameterType="member">
+        select memberUserName from member_table where memberUserName = #{memberUserName}
+    </select>
 </mapper>
 
 
