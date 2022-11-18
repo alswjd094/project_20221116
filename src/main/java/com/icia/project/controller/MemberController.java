@@ -48,8 +48,9 @@ private MemberService memberService;
         boolean loginResult = memberService.login(memberDTO);
         if(loginResult){
             session.setAttribute("loginEmail",memberDTO.getMemberEmail());
-            model.addAttribute("modelEmail",memberDTO.getMemberEmail());
-            return"board/main";
+            System.out.println("loginResult = " + loginResult);
+            model.addAttribute("modelUserName",memberDTO.getMemberUserName());
+            return"redirect:/board/list";
         }else{
             return"member/login";
         }

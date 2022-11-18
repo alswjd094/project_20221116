@@ -19,7 +19,7 @@
             <td>${board.boardWriter}</td>
         </tr>
         <tr>
-            <td>${board.boardFile}</td>
+            <td>${board.boardImage}</td>
         </tr>
         <tr>
             <td>${board.boardContents}</td>

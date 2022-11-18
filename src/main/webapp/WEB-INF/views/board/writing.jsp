@@ -15,19 +15,18 @@
 <div class="container">
     <form action="/board/writing" method="post" name="writingForm" enctype="multipart/form-data">
         <input type="text" name="boardWriter" value="${sessionScope.loginEmail}" class="form-control" readonly>
-        <input type="file" name="boardFile" placeholder="사진선택" class="form-control">
+        <div class="right-side">
         <textarea name="boardContents" cols="30" rows="10" placeholder="문구 입력" class="form-control"></textarea>
-        <span id="contents-input-check"></span>
+        </div>
+        <input type="file" name="boardFile" placeholder="사진선택" class="form-control">
         <input type="button" value="공유하기" onclick="writingFn()" class="btn btn-primary">
     </form>
 </div>
 </body>
 <script>
     const writingFn = () => {
-        if(document.writingForm.boardContents.value===""){
-            const contentsCheck = document.getElementById("contents-input-check");
-            contentsCheck.innerHTML="문구를 입력해주세요";
-            contentsCheck.style.color="red";
+        if(document.writingForm.boardFile.value===""){
+            alert("사진을 선택해주세요");
             return false;
         }
         document.writingForm.submit();
