@@ -16,9 +16,10 @@
     <title>detail.jsp</title>
     <link rel="stylesheet" href="/resources/css/bootstrap.css">
         <style>
-            *{
+            * {
                 font-family: 'Jua', sans-serif;
                 font-family: 'Noto Sans KR', sans-serif;
+            }
         </style>
 </head>
 <body>

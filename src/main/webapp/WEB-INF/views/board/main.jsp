@@ -18,12 +18,29 @@
     <link rel="stylesheet" href="/resources/css/bootstrap.css">
     <style>
         #main-form {
-            /*border: 1px solid gray ;*/
-            border-radius: 30px 30px 30px 30px;
+            width: 450px;
+            height: auto;
+            background: #fff;
+            outline: 1px solid #dfdfdf;
+            border-radius: 20px 20px 20px 20px;
+            margin-top: 40px;
+            /*가운데 정렬 margin: auto*/
+            margin-left: auto;
+            margin-right: auto;
+            align-items: center;
         }
-        *{
+        * {
             font-family: 'Jua', sans-serif;
             font-family: 'Noto Sans KR', sans-serif;
+        }
+        #fontSizeWriter{
+            font-size: small;
+
+        }
+        #fontSizeDate{
+            font-size: xx-small;
+            color: rgba(0,0,0,0.28);
+        }
     </style>
 
 </head>
@@ -32,26 +49,23 @@
 <%--sidebars로 적용--%>
 <%--<button onclick="logoutFn()" class="btn btn-danger" >로그아웃</button>--%>
 <%--<button onclick="writing()" class="btn btn-primary">새 게시물 만들기</button>--%>
-<div class="container">
+<div id="main-form">
     <form>
-        <table class="table table-borderless text-center" id="main-form">
+        <table>
             <c:forEach items="${boardList}" var="board">
-                <tr>
+                <tr class="text-sm-start" id="fontSizeWriter">
             <td>${board.boardWriter}</td>
                 </tr>
                 <tr>
-
                 <c:if test="${board.boardImage != null}">
                     <td><img src="${pageContext.request.contextPath}/upload/${board.boardImage}" alt="" width="376" height="470"></td>
                 </c:if>
                 </tr>
-
-
-           <td> <a href="/board/detail?id=${board.id}">${board.boardContents}</a></td>
-
-                </tr>
                 <tr>
-           <td> <fmt:formatDate value="${board.boardCreatedDate}" pattern="yyyy-MM-dd HH:mm:ss" ></fmt:formatDate><br></td>
+           <td><a href="/board/detail?id=${board.id} ">${board.boardContents}</a></td>
+                </tr>
+                <tr class="text-sm-start" id="fontSizeDate">
+           <td> <fmt:formatDate value="${board.boardCreatedDate}" pattern="yyyy-MM-dd HH:mm:ss" ></fmt:formatDate></td>
                 </tr>
     </c:forEach>
         </table>
