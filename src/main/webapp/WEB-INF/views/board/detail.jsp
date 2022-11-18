@@ -9,8 +9,17 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
+    <%--폰트 적용--%>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <title>detail.jsp</title>
     <link rel="stylesheet" href="/resources/css/bootstrap.css">
+        <style>
+            *{
+                font-family: 'Jua', sans-serif;
+                font-family: 'Noto Sans KR', sans-serif;
+        </style>
 </head>
 <body>
 <div class="container">

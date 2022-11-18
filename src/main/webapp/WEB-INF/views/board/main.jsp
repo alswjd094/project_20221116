@@ -10,18 +10,20 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
+<%--폰트 적용--%>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <title>main.jsp</title>
     <link rel="stylesheet" href="/resources/css/bootstrap.css">
     <style>
-        table {
-            border: 1px solid black;
+        #main-form {
+            /*border: 1px solid gray ;*/
+            border-radius: 30px 30px 30px 30px;
         }
         *{
             font-family: 'Jua', sans-serif;
-        }
+            font-family: 'Noto Sans KR', sans-serif;
     </style>
 
 </head>
@@ -32,22 +34,21 @@
 <%--<button onclick="writing()" class="btn btn-primary">새 게시물 만들기</button>--%>
 <div class="container">
     <form>
-        <table class="table table-striped table-hover">
+        <table class="table table-borderless text-center" id="main-form">
             <c:forEach items="${boardList}" var="board">
                 <tr>
             <td>${board.boardWriter}</td>
                 </tr>
                 <tr>
-                <figure class="figure">
+
                 <c:if test="${board.boardImage != null}">
-                    <td><img src="${pageContext.request.contextPath}/upload/${board.boardImage}" alt="" width="200" height="200"></td>
+                    <td><img src="${pageContext.request.contextPath}/upload/${board.boardImage}" alt="" width="376" height="470"></td>
                 </c:if>
                 </tr>
-                <tr>
-                    <figcaption class="figure-caption">
+
+
            <td> <a href="/board/detail?id=${board.id}">${board.boardContents}</a></td>
-                    </figcaption>
-                </figure>
+
                 </tr>
                 <tr>
            <td> <fmt:formatDate value="${board.boardCreatedDate}" pattern="yyyy-MM-dd HH:mm:ss" ></fmt:formatDate><br></td>
