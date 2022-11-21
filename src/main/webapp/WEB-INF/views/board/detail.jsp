@@ -51,7 +51,7 @@
                 <ul class="dropdown-menu text-small shadow">
                     <li><a onclick="deleteFn()" class="dropdown-item">삭제하기</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="/member/logout">수정하기</a></li>
+                    <li><a onclick="updateFn()" class="dropdown-item">수정하기</a></li>
                 </ul>
             </c:if>
         </tr>
@@ -73,6 +73,10 @@
     const deleteFn = () => {
         const id='${board.id}';
         location.href="/board/delete?id="+id;
+    }
+    const updateFn = () => {
+        const id = '${board.id}';
+        location.href="/board/update?id="+id;
     }
 </script>
 </html>
