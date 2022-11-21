@@ -16,6 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <title>detail.jsp</title>
     <link rel="stylesheet" href="/resources/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
         <style>
             * {
                 font-family: 'Jua', sans-serif;
@@ -64,7 +65,7 @@
             <td>${board.boardContents}</td>
         </tr>
         <tr>
-            <td><fmt:formatDate value="${findById.boardCreatedDate}" pattern="yyyy-MM-dd HH:mm:ss" ></fmt:formatDate></td>
+            <td><fmt:formatDate value="${board.boardCreatedDate}" pattern="yyyy-MM-dd HH:mm:ss" ></fmt:formatDate></td>
         </tr>
     </table>
 </div>

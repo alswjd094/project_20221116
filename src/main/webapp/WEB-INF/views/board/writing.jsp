@@ -11,6 +11,7 @@
     <title>writing.jsp</title>
     <link rel="stylesheet" href="/resources/css/bootstrap.css">
     <style>
+    <%--파일 업로드이미지와 text 나란히 보기--%>
         .box1{
             border: 2px #dfdfdf;
             width: 50%;
