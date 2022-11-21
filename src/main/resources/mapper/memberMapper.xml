@@ -15,7 +15,7 @@ values (#{memberEmail}, #{memberPassword}, #{memberName}, #{memberUserName}, #{m
         select memberUserName from member_table where memberUserName = #{memberUserName}
     </select>
     <select id="login" resultType="member" parameterType="member">
-        select * from member_table where memberEmail = #{memberEmail} and memberPassword = #{memberPassword}
+        select * from member_table where  memberEmail=#{memberEmail} and memberPassword = #{memberPassword}
     </select>
 </mapper>
 

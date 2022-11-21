@@ -42,4 +42,10 @@ public class BoardController {
         model.addAttribute("board",boardDTO);
         return"board/detail";
     }
+
+    @GetMapping("/board/delete")
+    public String delete(@RequestParam("id") Long id){
+        boardService.delete(id);
+        return "redirect:/board/list";
+    }
 }

@@ -15,11 +15,14 @@ values (#{originalFileName_board}, #{storedFileName_board}, #{id})
     <select id="list" resultType="board">
         select*from board_table
     </select>
-    <select id="boardFindById" resultType="Long" parameterType="board">
+    <select id="boardFindById" resultType="board" parameterType="Long">
         select * from board_table where id=#{id}
     </select>
     <select id="boardFindByIdFile" resultType="board" parameterType="board">
         select*from board_table b, board_file_table bf where b.id=bf.boardFileId and b.id=#{id}
     </select>
+    <delete id="delete" parameterType="Long">
+        delete from board_table where id=#{id}
+    </delete>
 
 </mapper>

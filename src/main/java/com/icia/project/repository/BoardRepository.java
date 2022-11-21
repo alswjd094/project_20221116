@@ -32,4 +32,8 @@ public class BoardRepository {
             return boardDTO;
         }
     }
+
+    public void delete(Long id) {
+        sql.delete("Board.delete",id);
+    }
 }

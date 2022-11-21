@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
@@ -20,16 +21,44 @@
                 font-family: 'Jua', sans-serif;
                 font-family: 'Noto Sans KR', sans-serif;
             }
+
+            #detail-form{
+                width: 450px;
+                height: auto;
+                background: #fff;
+                outline: 1px solid #dfdfdf;
+                border-radius: 20px 20px 20px 20px;
+                margin-top: 40px;
+                /*가운데 정렬 margin: auto*/
+                margin-left: auto;
+                margin-right: auto;
+                align-items: center;
+            }
         </style>
 </head>
 <body>
-<div class="container">
-    <table class="table table-striped table-hover text-center">
+<jsp:include page="../layout/sidebars.jsp" flush="false"></jsp:include>
+<div id="detail-form">
+    <table class="table">
         <tr>
             <td>${board.boardWriter}</td>
+                <a href="#" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none " title="더보기" data-bs-toggle="dropdown" aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                    </svg>
+                </a>
+            <c:if test="${sessionScope.loginEmail == board.boardWriter}">
+                <ul class="dropdown-menu text-small shadow">
+                    <li><a onclick="deleteFn()" class="dropdown-item">삭제하기</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="/member/logout">수정하기</a></li>
+                </ul>
+            </c:if>
         </tr>
         <tr>
-            <td>${board.boardImage}</td>
+            <c:if test="${board.boardImage != null}">
+                <td><img src="${pageContext.request.contextPath}/upload/${board.boardImage}" alt="" width="376" height="470"></td>
+            </c:if>
         </tr>
         <tr>
             <td>${board.boardContents}</td>
@@ -40,4 +69,10 @@
     </table>
 </div>
 </body>
+<script>
+    const deleteFn = () => {
+        const id='${board.id}';
+        location.href="/board/delete?id="+id;
+    }
+</script>
 </html>
