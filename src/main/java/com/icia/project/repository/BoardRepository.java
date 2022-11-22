@@ -40,4 +40,8 @@ public class BoardRepository {
     public void update(BoardDTO boardDTO) {
         sql.update("Board.update",boardDTO);
     }
+
+    public List<BoardDTO> search(String q) {
+        return sql.selectList("Board.search",q);
+    }
 }

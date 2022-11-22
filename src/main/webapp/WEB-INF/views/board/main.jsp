@@ -23,7 +23,8 @@
             background: #fff;
             outline: 1px solid #dfdfdf;
             border-radius: 20px 20px 20px 20px;
-            margin-top: 40px;
+            margin-top: 60px;
+            margin-bottom: 65px;
             /*가운데 정렬 margin: auto*/
             margin-left: auto;
             margin-right: auto;
@@ -51,7 +52,6 @@
 <%--<button onclick="logoutFn()" class="btn btn-danger" >로그아웃</button>--%>
 <%--<button onclick="writing()" class="btn btn-primary">새 게시물 만들기</button>--%>
 <div id="main-form">
-    <form>
         <table>
             <c:forEach items="${boardList}" var="board">
                 <tr class="text-sm-start" id="fontSizeWriter">
@@ -70,7 +70,6 @@
                 </tr>
     </c:forEach>
         </table>
-    </form>
 </div>
 
 </body>

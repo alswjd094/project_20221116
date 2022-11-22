@@ -27,5 +27,7 @@ values (#{originalFileName_board}, #{storedFileName_board}, #{id})
     <update id="update" parameterType="board">
         update board_table set boardContents=#{boardContents} where id=#{id}
     </update>
-
+<select id="search" parameterType="board" resultType="board">
+    select * from board_table where concat('%',#{q},'%') order by id desc
+</select>
 </mapper>

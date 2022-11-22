@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
 @Controller
 public class MemberController {
@@ -20,7 +21,7 @@ private MemberService memberService;
     }
     @PostMapping ("/member/save")
     public String save(@ModelAttribute MemberDTO memberDTO){
-        boolean saveResult = memberService.save(memberDTO);
+        memberService.save(memberDTO);
         return "member/login";
     }
 
@@ -48,9 +49,7 @@ private MemberService memberService;
         boolean loginResult = memberService.login(memberDTO);
         if(loginResult){
             session.setAttribute("loginEmail",memberDTO.getMemberEmail());
-            session.getAttribute("loginEmail");
             session.setAttribute("loginUserName",memberDTO.getMemberUserName());
-            session.getAttribute("loginUserName");
             System.out.println("loginResult = " + loginResult);
             model.addAttribute("modelUserName",memberDTO.getMemberUserName());
             return"redirect:/board/list";
@@ -62,5 +61,34 @@ private MemberService memberService;
     public String logout(HttpSession session){
         session.invalidate();
         return"index";
+    }
+
+    @GetMapping("/member/myPage")
+    public String myPageForm(Model model,HttpSession session){
+        String memberEmail = (String) session.getAttribute("loginEmail");
+        MemberDTO myPageForm = memberService.myPageForm(memberEmail);
+        model.addAttribute("findByEmail",myPageForm);
+        return"member/myPage";
+    }
+
+    @GetMapping("/member/profileUpdate")
+    public String profileUpdateForm(Model model,HttpSession session){
+        String memberEmail = (String) session.getAttribute("loginEmail");
+        MemberDTO myPageForm = memberService.myPageForm(memberEmail);
+        model.addAttribute("findByEmail",myPageForm);
+        return "member/profileUpdate";
+    }
+
+    @PostMapping("/member/profileUpdate")
+    public String profileUpdate(@ModelAttribute MemberDTO memberDTO) throws IOException{
+        memberService.profileUpdate(memberDTO);
+        return "redirect:/member/myPage?id="+memberDTO.getId();
+    }
+
+    @PostMapping("/member/myPage")
+    public String memberFindById(@RequestParam("id") Long id, Model model){
+        MemberDTO member = memberService.memberFindById(id);
+        model.addAttribute("member",member);
+        return "redirect:/member/myPage";
     }
 }

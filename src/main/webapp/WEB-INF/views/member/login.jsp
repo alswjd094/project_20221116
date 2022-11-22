@@ -8,9 +8,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <title>login.jsp</title>
   <link rel="stylesheet" href="/resources/css/bootstrap.css">
   <style>
+    * {
+      font-family: 'Jua', sans-serif;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
     #login-form{
       width: 400px;
     }

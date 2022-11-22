@@ -9,8 +9,9 @@ import org.springframework.stereotype.Repository;
 public class MemberRepository {
     @Autowired
     private SqlSessionTemplate sql;
-    public int save(MemberDTO memberDTO) {
-        return sql.insert("Member.save",memberDTO);
+    public MemberDTO save(MemberDTO memberDTO) {
+        sql.insert("Member.save",memberDTO);
+        return memberDTO;
     }
 
     public String emailDuplicateCheck(String memberEmail) {
@@ -23,5 +24,27 @@ public class MemberRepository {
 
     public MemberDTO login(MemberDTO memberDTO) {
         return sql.selectOne("Member.login",memberDTO);
+    }
+
+    public MemberDTO myPageForm(String memberEmail) {
+        return sql.selectOne("Member.myPageForm",memberEmail);
+    }
+
+    public void saveFileName(MemberDTO memberDTO) {
+        sql.insert("Member.saveFileName",memberDTO);
+    }
+
+    public MemberDTO memberFindById(Long id) {
+        MemberDTO memberDTO = sql.selectOne("Member.memberFindById",id);
+        if(memberDTO.getFileAttached_member()==1){
+            return sql.selectOne("Member.memberFindByFile",id);
+        }else{
+            return memberDTO;
+        }
+    }
+
+    public MemberDTO profileUpdate(MemberDTO memberDTO) {
+        sql.update("Member.profileUpdate",memberDTO);
+        return memberDTO;
     }
 }

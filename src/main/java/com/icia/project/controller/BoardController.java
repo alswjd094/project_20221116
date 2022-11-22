@@ -62,4 +62,10 @@ public class BoardController {
         model.addAttribute("board",dto);
         return "board/detail";
     }
+    @GetMapping("/board/search")
+    public String search(@RequestParam("q") String q,Model model){
+        List<BoardDTO> searchList = boardService.search(q);
+        model.addAttribute("boardList",searchList);
+        return"/board/main";
+    }
 }

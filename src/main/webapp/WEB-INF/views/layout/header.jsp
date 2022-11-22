@@ -28,7 +28,7 @@
       <a href="/board/list" class="d-flex mb-2 mb-lg-0 text-dark text-decoration-none">
         <img src="/resources/image/instagram.jpg" width="110" height="40">
       </a>
-      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+      <form action="/board/search" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
         <input type="search" name="q" class="form-control" placeholder="검색" aria-label="Search">
       </form>
 

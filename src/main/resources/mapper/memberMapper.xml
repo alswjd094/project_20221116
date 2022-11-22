@@ -17,6 +17,21 @@ values (#{memberEmail}, #{memberPassword}, #{memberName}, #{memberUserName}, #{m
     <select id="login" resultType="member" parameterType="member">
         select * from member_table where  memberEmail=#{memberEmail} and memberPassword = #{memberPassword}
     </select>
+    <select id="myPageForm" resultType="member" parameterType="member">
+        select*from member_table where memberEmail=#{memberEmail}
+    </select>
+<insert id="saveFileName" parameterType="member">
+    insert into member_file_table(originalFileName_profile,storedFileName_profile,memberId) values(#{originalFileName_profile},#{storedFileName_profile},#{id})
+</insert>
+<select id="memberFindById" parameterType="Long" resultType="member">
+    select*from member_table where id=#{id}
+</select>
+    <select id="memberFindByFile" resultType="member" parameterType="member">
+        select*from member_table m, member_file_table mf where m.id = mf.memberId and m.id=#{id}
+    </select>
+    <update id="profileUpdate" parameterType="member">
+        update member_table set memberProfile=#{memberProfile}, memberIntro=#{memberIntro} where id=#{id}
+    </update>
 </mapper>
 
 
