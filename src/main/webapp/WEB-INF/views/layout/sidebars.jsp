@@ -14,7 +14,27 @@
   <script type="text/javascript"src="/resources/jsp/bootstrap.bundle.js"></script>
 <%--icon link--%>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
-
+  <style>
+    #modal{
+      display: none;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+    #modal .modal_layer{
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: -1;
+    }
+    #search-form{
+      width: 600px;
+    }
+  </style>
 </head>
 <body>
 <div class="d-flex flex-column flex-shrink-0 bg-light fixed-top fixed-bottom" style="width: 4.5rem;">
@@ -38,11 +58,20 @@
     </li>
     <li>
       <div>
-      <a href="/board/search" class="d-block py-3 rounded-0 link-dark" title="검색" data-bs-placement="right" data-bs-toggle="modal" aria-expanded="false">
+      <a href="/board/search" class="d-block py-3 rounded-0 link-dark" title="검색" data-bs-placement="right" data-bs-toggle="modal" aria-expanded="false" id="modal_open_btn">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
           <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
         </svg>
       </a>
+
+      <div id="modal">
+<%--        <div class="modal_contents">--%>
+<%--          <input type="search" name="q" class="form-control" id="search-form"placeholder="Search..." aria-label="Search">--%>
+          <jsp:include page="../layout/modals.jsp" flush="false"></jsp:include>
+<%--        </div>--%>
+<%--        <div class="modal_layer"></div>--%>
+<%--        <button id="modal_close_btn">X</button>--%>
+<%--      </div>--%>
       </div>
     </li>
     <li>
@@ -54,7 +83,7 @@
       </a>
     </li>
   <li>
-    <a href="board/myPage" class="d-block py-3 rounded-0 link-dark" title="프로필" data-bs-toggle="tooltip" data-bs-placement="right">
+    <a href="/member/myPage" class="d-block py-3 rounded-0 link-dark" title="프로필" data-bs-toggle="tooltip" data-bs-placement="right">
 <%--프로필 이미지 넣기 class=rounded circle--%>
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
     <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
@@ -62,6 +91,7 @@
   </svg>
     </a>
   </li>
+  </ul>
   </ul>
 
     <div class="dropdown">
@@ -77,5 +107,14 @@
       </ul>
 </div>
 </div>
+<script>
+  document.getElementById("modal_open_btn").onclick=function (){
+    document.getElementById("modal").style.display="block";
+  }
+  // document.getElementById("modal_close_btn").onclick=function (){
+  //   document.getElementById("modal").style.display="none";
+  // }
+
+</script>
 </body>
 </html>

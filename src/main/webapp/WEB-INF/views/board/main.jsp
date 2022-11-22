@@ -45,7 +45,8 @@
 
 </head>
 <body>
-<jsp:include page="../layout/sidebars.jsp" flush="false"></jsp:include>
+<jsp:include page="../layout/header.jsp" flush="false"></jsp:include>
+<jsp:include page="../layout/footer.jsp" flush="false"></jsp:include>
 <%--sidebars로 적용--%>
 <%--<button onclick="logoutFn()" class="btn btn-danger" >로그아웃</button>--%>
 <%--<button onclick="writing()" class="btn btn-primary">새 게시물 만들기</button>--%>

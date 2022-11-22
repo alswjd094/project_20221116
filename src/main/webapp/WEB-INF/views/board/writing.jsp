@@ -12,30 +12,44 @@
     <link rel="stylesheet" href="/resources/css/bootstrap.css">
     <style>
     <%--파일 업로드이미지와 text 나란히 보기--%>
-        .box1{
-            border: 2px #dfdfdf;
-            width: 50%;
-            height: 180px;
-            float: left;
-            box-sizing: border-box;
-        }
-        .box2{
-            border: 2px #dfdfdf;
-            width: 50%;
-            height: 180px;
-            float: right;
-            box-sizing: border-box;
-        }
+    /*    .box1{*/
+    /*        border: 2px #dfdfdf;*/
+    /*        margin-left: 100px;*/
+    /*        margin-right: auto;*/
+    /*        width: 50%;*/
+    /*        height: 180px;*/
+    /*        float: left;*/
+    /*        box-sizing: border-box;*/
+    /*    }*/
+    /*    .box2{*/
+    /*        border: 2px #dfdfdf;*/
+    /*        margin-left: auto;*/
+    /*        margin-right: auto;*/
+    /*        width: 50%;*/
+    /*        height: 180px;*/
+    /*        float: right;*/
+    /*        box-sizing: border-box;*/
+    /*    }*/
+    .box1{
+        border: 1px solid #dfdfdf;
+        margin-left: 100px;
+        /*나란히 붙이기*/
+        float: left;
+    }
+    .box2{
+        /*border: 1px solid #dfdfdf;*/
+        float: left;
+    }
     </style>
 </head>
 <body>
-<jsp:include page="../layout/sidebars.jsp" flush="false"></jsp:include>
+<jsp:include page="../layout/header.jsp" flush="false"></jsp:include>
+<jsp:include page="../layout/footer.jsp" flush="false"></jsp:include>
 <div class="container">
-
-    <form action="/board/writing" method="post" name="writingForm" enctype="multipart/form-data">
+    <form action="/board/writing" method="post" name="writingForm" id="writing-form" enctype="multipart/form-data">
         <div class="box1">
 <%-- 업로드 이미지 미리보기--%>
-        <img id="preview" width="350" height="400">
+        <img id="preview" width="350" height="370">
         </div>
         <div class="box2">
         <input type="text" name="boardWriter" value="${sessionScope.loginEmail}" class="form-control" readonly>

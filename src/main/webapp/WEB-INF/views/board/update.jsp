@@ -37,7 +37,8 @@
   </style>
 </head>
 <body>
-<jsp:include page="../layout/sidebars.jsp" flush="false"></jsp:include>
+<jsp:include page="../layout/header.jsp" flush="false"></jsp:include>
+<jsp:include page="../layout/footer.jsp" flush="false"></jsp:include>
 <div id="update-form">
   <form action="/board/update" method="post" name="updateForm" enctype="multipart/form-data">
     <input type="hidden" name="id" value="${board.id}" class="form-control">
