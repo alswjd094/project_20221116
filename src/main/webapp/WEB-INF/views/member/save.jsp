@@ -15,6 +15,8 @@
     #save-form{
       width: 400px;
       text-align: center;
+      margin-top: 100px;
+      border: solid 1px #dfdfdf;
     }
   </style>
 </head>

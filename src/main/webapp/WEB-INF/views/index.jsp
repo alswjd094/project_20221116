@@ -12,7 +12,11 @@
     <link rel="stylesheet" href="/resources/css/bootstrap.css">
     <style>
         #index-form{
-            width: 400px;
+            width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 100px;
+            border: solid 1px #dfdfdf;
         }
     </style>
 </head>
@@ -25,7 +29,7 @@
         <div class="d-grid gap-2 mt-3">
         <input type="submit" value="로그인" class="btn btn-primary">
         </div>
-        <p>계정이 없으신가요? <a href="/member/save">가입하기</a></p>
+        <p class="mt-5">계정이 없으신가요? <a href="/member/save">가입하기</a></p>
     </form>
 </div>
 </body>
