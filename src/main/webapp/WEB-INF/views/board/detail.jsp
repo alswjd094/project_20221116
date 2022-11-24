@@ -51,6 +51,11 @@
                 font-size: xx-small;
                 color: rgba(0,0,0,0.28);
             }
+            .heart-image{
+                border: none;
+                outline: none;
+
+            }
         </style>
 </head>
 <body>
@@ -88,7 +93,7 @@
 <%--                    <a href="/likes/heart" class="text-dark heart" style="text-decoration-line: none;">--%>
 <%--                        <img id="heartImage" src="/resources/icon/heart.svg">--%>
 <%--                    </a>--%>
-                    <button style="text-decoration-line: none;" onclick="likesFn()" id="heart"><img id="heartImage" src="/resources/icon/heart.svg"></button>
+                    <button onclick="likesFn()" id="heart" class="heart-image"><img id="heartImage" src="/resources/icon/heart.svg"></button>
                 </div>
             </td>
         </tr>
@@ -186,10 +191,10 @@
             dataType: "json",
             success: function (data){
                console.log(data);
-               if(data==1){
-                   $('#heart').prop("/resources/icon/heart-fill.svg");
+               if(data===1){
+                   $('#heartImage').prop("src", "/resources/icon/heart-fill.svg");
                }else{
-                   $('#heart').prop("/resources/icon/heart.svg");
+                   $('#heartImage').prop("src", "/resources/icon/heart.svg");
                }
             },
             error: function (){
