@@ -12,7 +12,7 @@ values (#{boardContents}, #{boardWriter}, #{boardImage}, #{boardId}, #{fileAttac
 values (#{originalFileName_board}, #{storedFileName_board}, #{id})
     </insert>
     <select id="list" resultType="board">
-        select*from board_table
+        select*from board_table order by id desc
     </select>
     <select id="boardFindById" resultType="board" parameterType="Long">
         select * from board_table where id=#{id}
@@ -26,7 +26,7 @@ values (#{originalFileName_board}, #{storedFileName_board}, #{id})
     <update id="update" parameterType="board">
         update board_table set boardContents=#{boardContents} where id=#{id}
     </update>
-<select id="search" parameterType="board" resultType="board">
+<select id="search" parameterType="java.util.HashMap" resultType="board">
     select * from board_table where ${type} like concat('%',#{q},'%') order by id desc
 </select>
 </mapper>

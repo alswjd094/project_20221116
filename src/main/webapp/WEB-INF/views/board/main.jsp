@@ -27,11 +27,13 @@
             background: #fff;
             outline: 1px solid #dfdfdf;
             border-radius: 20px 20px 20px 20px;
-            margin-top: 60px;
+            margin-top: 65px;
             margin-bottom: 65px;
             /*가운데 정렬 margin: auto*/
             margin-left: auto;
             margin-right: auto;
+            /*사용자이름,콘텐츠 등 가운데로 조정*/
+            padding: 10px 35px;
 
         }
         * {
@@ -75,7 +77,7 @@
                     </td>
                 </tr>
                 <tr class="text-sm-start" id="fontSizeDate">
-           <td> <fmt:formatDate value="${board.boardCreatedDate}" pattern="yyyy-MM-dd HH:mm:ss" ></fmt:formatDate></td>
+           <td> <fmt:formatDate value="${board.boardCreatedDate}" pattern="yyyy-MM-dd HH:mm:ss"  ></fmt:formatDate><br><br><br><br><br></td>
                 </tr>
     </c:forEach>
         </table>

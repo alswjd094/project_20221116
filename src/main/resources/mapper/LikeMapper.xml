@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="Likes">
+    <select id="findLike" resultType="int">
+        select count(*) from likes_table where userId=#{userId} and imageId=#{imageId}
+    </select>
+    <select id="findHeart" parameterType="likes" resultType="likes">
+        select * from likes_table where userId=#{userId} and imageId=#{imageId}
+    </select>
+    <select id="findHeartJoin" parameterType="likes" resultType="likes" >
+        select*from member_table m, likes_table l, board_table b where m.id=l.userId and b.id=l.imageId
+    </select>
+    <insert id="heart" parameterType="likes">
+        insert into likes_table(userId, imageId,heart) values (#{userId},#{imageId},1)
+    </insert>
+    <delete id="deleteHeart" parameterType="likes">
+        delete from likes_table where userId = #{userId} and imageId=#{imageId}
+    </delete>
+</mapper>

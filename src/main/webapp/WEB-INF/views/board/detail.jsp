@@ -42,12 +42,7 @@
                 margin-right: auto;
                 align-items: center;
                 text-align: center;
-            }
-            .box111{
-                float: left;
-            }
-            .box222{
-                float: left;
+                padding: 10px 35px;
             }
             #comment-write{
                 width: 300px;
@@ -64,16 +59,14 @@
 <div id="detail-form">
     <table>
         <tr>
-            <div class="box111">
             <td>${board.boardWriter}</td>
-            </div>
-            <div class="dropdown box222">
+            <div class="dropdown">
                 <td><a href="#" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none " title="더보기" data-bs-toggle="dropdown" aria-expanded="false">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-list" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
                     </svg>
                 </a>
-            <c:if test="${sessionScope.loginEmail == board.boardWriter}">
+            <c:if test="${sessionScope.loginUserName == board.boardWriter}">
                 <ul class="dropdown-menu text-small shadow">
                     <li><a onclick="deleteFn()" class="dropdown-item">삭제하기</a></li>
                     <li><hr class="dropdown-divider"></li>
@@ -92,9 +85,10 @@
             <td>
                 <div>
                     <br>
-                    <a href="/likes/heart" class="text-dark heart" style="text-decoration-line: none;">
-                        <img id="heart" src="/resources/icon/heart.svg">
-                    </a>
+<%--                    <a href="/likes/heart" class="text-dark heart" style="text-decoration-line: none;">--%>
+<%--                        <img id="heartImage" src="/resources/icon/heart.svg">--%>
+<%--                    </a>--%>
+                    <button style="text-decoration-line: none;" onclick="likesFn()" id="heart"><img id="heartImage" src="/resources/icon/heart.svg"></button>
                 </div>
             </td>
         </tr>
@@ -177,8 +171,32 @@
             }
         });
     }
-
-
+    const likesFn = () => {
+        const userId = '${heart.userId}';
+        const imageId = '${heart.imageId}';
+        const id = '${heart.id}';
+        $.ajax ({
+           url:"/likes/heart",
+           type:"get",
+           data:{
+               userId: userId,
+               imageId: imageId,
+               id: id
+           },
+            dataType: "json",
+            success: function (data){
+               console.log(data);
+               if(data==1){
+                   $('#heart').prop("/resources/icon/heart-fill.svg");
+               }else{
+                   $('#heart').prop("/resources/icon/heart.svg");
+               }
+            },
+            error: function (){
+               console.log("실패");
+            }
+        });
+    }
     <%--$(document).ready(function () {--%>
     <%--    // 좋아요가 있는지 확인한 값을 heartval에 저장--%>
     <%--    var heartval = '${heart.heart}';--%>
