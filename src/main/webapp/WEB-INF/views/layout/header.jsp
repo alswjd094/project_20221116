@@ -29,9 +29,14 @@
         <img src="/resources/image/instagram.jpg" width="110" height="40">
       </a>
       <form action="/board/search" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+        <div class="input-group">
+            <select name="type" style="display:none">
+            <option value="boardContents" selected>내용</option>
+            <option value="boardWriter" selected>작성자</option>
+          </select>
         <input type="search" name="q" class="form-control" placeholder="검색" aria-label="Search">
+        </div>
       </form>
-
     </div>
   </div>
 </header>

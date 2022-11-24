@@ -19,7 +19,7 @@
       font-family: 'Noto Sans KR', sans-serif;
     }
     #login-form{
-      width: 400px;
+      width: 300px;
       margin-left: auto;
       margin-right: auto;
       margin-top: 100px;

@@ -10,7 +10,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class BoardService {
@@ -40,7 +42,8 @@ public class BoardService {
 //            boardImage에 값 넣기
             boardDTO.setBoardImage(boardDTO.getStoredFileName_board());
 //            boardId에 값 넣기
-
+            MemberDTO dto = memberRepository.myPageForm(boardDTO.getBoardWriter());
+            boardDTO.setBoardId(dto.getId());
 
             BoardDTO saveBoard = boardRepository.writing(boardDTO);
             boardRepository.saveFileName(saveBoard);
@@ -67,8 +70,12 @@ public class BoardService {
         boardRepository.update(boardDTO);
     }
 
-    public List<BoardDTO> search(String q) {
-        return boardRepository.search(q);
+    public List<BoardDTO> search(String type, String q) {
+        Map<String, String> searchParams = new HashMap<>();
+        searchParams.put("type",type);
+        searchParams.put("q",q);
+        List<BoardDTO> searchList = boardRepository.search(searchParams);
+        return searchList;
 
     }
 }

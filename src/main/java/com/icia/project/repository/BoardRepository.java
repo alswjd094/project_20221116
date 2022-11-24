@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class BoardRepository {
@@ -41,7 +42,7 @@ public class BoardRepository {
         sql.update("Board.update",boardDTO);
     }
 
-    public List<BoardDTO> search(String q) {
-        return sql.selectList("Board.search",q);
+    public List<BoardDTO> search(Map<String,String> searchParams) {
+        return sql.selectList("Board.search",searchParams);
     }
 }

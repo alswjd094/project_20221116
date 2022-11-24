@@ -1,7 +1,11 @@
 package com.icia.project.controller;
 
 import com.icia.project.dto.BoardDTO;
+import com.icia.project.dto.LikesDTO;
+import com.icia.project.dto.MemberDTO;
+import com.icia.project.repository.MemberRepository;
 import com.icia.project.service.BoardService;
+import com.icia.project.service.LikesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +21,8 @@ import java.util.List;
 public class BoardController {
     @Autowired
     private BoardService boardService;
+    @Autowired
+    private MemberRepository memberRepository;
 
     @GetMapping("/board/writing")
     public String writingForm(){
@@ -35,11 +41,22 @@ public class BoardController {
         model.addAttribute("boardList",boardList);
         return"board/main";
     }
-    @GetMapping("/board/detail")
-    public String boardFindById(@RequestParam("id")Long id, Model model){
+    @GetMapping ("/board/detail")
+    public String boardFindById(@RequestParam("id") Long id, Model model){
         BoardDTO boardDTO = boardService.boardFindById(id);
         System.out.println("boardDTO = " + boardDTO);
         model.addAttribute("board",boardDTO);
+
+        LikesDTO heart = new LikesDTO();
+        // 좋아요가 되어 있는지 찾기위해 게시글번호와 회원번호를 보냄.
+        heart.setImageId(boardDTO.getId());
+        MemberDTO dto = memberRepository.myPageForm(boardDTO.getBoardWriter());
+        heart.setUserId(dto.getId());
+
+        // 찾은 정보를 heart로 담아서 보냄
+        model.addAttribute("heart",heart);
+
+
         return"board/detail";
     }
 
@@ -63,9 +80,9 @@ public class BoardController {
         return "board/detail";
     }
     @GetMapping("/board/search")
-    public String search(@RequestParam("q") String q,Model model){
-        List<BoardDTO> searchList = boardService.search(q);
+    public String search(@RequestParam("type") String type, @RequestParam("q") String q,Model model){
+        List<BoardDTO> searchList = boardService.search(type,q);
         model.addAttribute("boardList",searchList);
-        return"/board/main";
+        return"board/main";
     }
 }
