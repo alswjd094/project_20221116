@@ -1,5 +1,6 @@
 package com.icia.project.controller;
 
+import com.icia.project.dto.BoardDTO;
 import com.icia.project.dto.MemberDTO;
 import com.icia.project.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,16 +66,16 @@ private MemberService memberService;
 
     @GetMapping("/member/myPage")
     public String myPageForm(Model model,HttpSession session){
-        String memberEmail = (String) session.getAttribute("loginEmail");
-        MemberDTO myPageForm = memberService.myPageForm(memberEmail);
+        String memberUserName = (String) session.getAttribute("loginUserName");
+        MemberDTO myPageForm = memberService.myPageForm(memberUserName);
         model.addAttribute("findByEmail",myPageForm);
         return"member/myPage";
     }
 
     @GetMapping("/member/profileUpdate")
     public String profileUpdateForm(Model model,HttpSession session){
-        String memberEmail = (String) session.getAttribute("loginEmail");
-        MemberDTO myPageForm = memberService.myPageForm(memberEmail);
+        String memberUserName = (String) session.getAttribute("loginUserName");
+        MemberDTO myPageForm = memberService.myPageForm(memberUserName);
         model.addAttribute("findByEmail",myPageForm);
         return "member/profileUpdate";
     }

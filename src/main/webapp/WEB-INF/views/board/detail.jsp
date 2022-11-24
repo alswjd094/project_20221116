@@ -91,6 +91,7 @@
         <tr>
             <td>
                 <div>
+                    <br>
                     <a href="/likes/heart" class="text-dark heart" style="text-decoration-line: none;">
                         <img id="heart" src="/resources/icon/heart.svg">
                     </a>
@@ -121,7 +122,7 @@
         <tr>
             <td>
                 <div id="comment-write" class="input-group" mb-3>
-                    <input type="hidden" id="commentWriter" value="${sessionScope.loginEmail}">
+                    <input type="hidden" id="commentWriter" value="${sessionScope.loginUserName}">
                     <input type="text" id="commentContents" class="form-control" placeholder="댓글달기...">
                     <button id="comment-write-btn" class="btn btn-primary" onclick="commentWrite()">게시</button>
                 </div>
@@ -176,6 +177,8 @@
             }
         });
     }
+
+
     <%--$(document).ready(function () {--%>
     <%--    // 좋아요가 있는지 확인한 값을 heartval에 저장--%>
     <%--    var heartval = '${heart.heart}';--%>

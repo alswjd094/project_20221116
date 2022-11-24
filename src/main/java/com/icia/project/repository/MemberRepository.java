@@ -26,8 +26,8 @@ public class MemberRepository {
         return sql.selectOne("Member.login",memberDTO);
     }
 
-    public MemberDTO myPageForm(String memberEmail) {
-        return sql.selectOne("Member.myPageForm",memberEmail);
+    public MemberDTO myPageForm(String memberUserName) {
+        return sql.selectOne("Member.myPageForm",memberUserName);
     }
 
     public void saveFileName(MemberDTO memberDTO) {

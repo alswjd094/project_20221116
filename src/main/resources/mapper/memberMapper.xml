@@ -15,10 +15,10 @@ values (#{memberEmail}, #{memberPassword}, #{memberName}, #{memberUserName}, #{m
         select memberUserName from member_table where memberUserName = #{memberUserName}
     </select>
     <select id="login" resultType="member" parameterType="member">
-        select * from member_table where  memberEmail=#{memberEmail} and memberPassword = #{memberPassword}
+        select * from member_table where  memberUserName=#{memberUserName} and memberPassword = #{memberPassword}
     </select>
     <select id="myPageForm" resultType="member" parameterType="member">
-        select*from member_table where memberEmail=#{memberEmail}
+        select*from member_table where memberUserName=#{memberUserName}
     </select>
 <insert id="saveFileName" parameterType="member">
     insert into member_file_table(originalFileName_profile,storedFileName_profile,memberId) values(#{originalFileName_profile},#{storedFileName_profile},#{id})

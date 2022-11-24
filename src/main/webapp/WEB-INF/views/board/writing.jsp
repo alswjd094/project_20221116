@@ -54,7 +54,7 @@
         <img id="preview" width="350" height="370">
         </div>
         <div class="box2">
-        <input type="text" name="boardWriter" value="${sessionScope.loginEmail}" class="form-control" readonly>
+        <input type="text" name="boardWriter" value="${sessionScope.loginUserName}" class="form-control" readonly>
         <div class="right-side">
         <textarea name="boardContents" cols="30" rows="10" placeholder="문구 입력" class="form-control"></textarea>
         </div>

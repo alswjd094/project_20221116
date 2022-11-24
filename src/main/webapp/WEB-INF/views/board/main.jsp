@@ -32,7 +32,7 @@
             /*가운데 정렬 margin: auto*/
             margin-left: auto;
             margin-right: auto;
-            align-items: center;
+
         }
         * {
             font-family: 'Jua', sans-serif;
