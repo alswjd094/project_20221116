@@ -5,7 +5,7 @@
 
 <mapper namespace="Comment">
     <insert id="commentSave" parameterType="comment">
-        insert into comment_table(commentWriter, commentContents, commentId) values (#{commentWriter}, #{commentContents},#{commentId})
+        insert into comment_table (commentWriter, commentContents, commentId) values (#{commentWriter}, #{commentContents},#{commentId})
     </insert>
     <select id="findAllComment" resultType="comment" parameterType="Long">
         select * from comment_table where commentId=#{commentId} order by id desc

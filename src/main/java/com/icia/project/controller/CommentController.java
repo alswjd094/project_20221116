@@ -16,9 +16,10 @@ public class CommentController {
     private CommentService commentService;
 
 @PostMapping("/comment/save")
-    public @ResponseBody List<CommentDTO> CommentSave(@ModelAttribute CommentDTO commentDTO){
+    public @ResponseBody List<CommentDTO> commentSave(@ModelAttribute CommentDTO commentDTO){
     commentService.commentSave(commentDTO);
     List<CommentDTO> commentDTOList = commentService.findAllComment(commentDTO.getCommentId());
+
     return commentDTOList;
 }
 }

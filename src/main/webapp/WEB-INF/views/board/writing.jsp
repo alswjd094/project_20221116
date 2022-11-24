@@ -33,11 +33,13 @@
     .box1{
         border: 1px solid #dfdfdf;
         margin-left: 100px;
+        margin-top: 80px;
         /*나란히 붙이기*/
         float: left;
     }
     .box2{
         /*border: 1px solid #dfdfdf;*/
+        margin-top: 80px;
         float: left;
     }
     </style>

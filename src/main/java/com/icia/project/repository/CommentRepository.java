@@ -16,6 +16,6 @@ public class CommentRepository {
     }
 
     public List<CommentDTO> findAllComment(Long commentId) {
-        return sql.selectOne("Comment.findAllComment",commentId);
+        return sql.selectList("Comment.findAllComment",commentId);
     }
 }

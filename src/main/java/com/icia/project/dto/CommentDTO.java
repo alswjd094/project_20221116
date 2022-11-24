@@ -15,4 +15,5 @@ public class CommentDTO {
     private String commentWriter;
     private String commentContents;
     private Timestamp commentCreatedDate;
+
 }

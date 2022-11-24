@@ -15,6 +15,7 @@
     <title>myPage.jsp</title>
     <link rel="stylesheet" href="/resources/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <%--    드롭다운 사용시 필요--%>
     <script type="text/javascript"src="/resources/jsp/bootstrap.bundle.js"></script>
     <style>
         * {

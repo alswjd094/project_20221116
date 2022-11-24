@@ -1,10 +1,12 @@
 package com.icia.project.controller;
 
 import com.icia.project.dto.BoardDTO;
+import com.icia.project.dto.CommentDTO;
 import com.icia.project.dto.LikesDTO;
 import com.icia.project.dto.MemberDTO;
 import com.icia.project.repository.MemberRepository;
 import com.icia.project.service.BoardService;
+import com.icia.project.service.CommentService;
 import com.icia.project.service.LikesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +23,8 @@ import java.util.List;
 public class BoardController {
     @Autowired
     private BoardService boardService;
+    @Autowired
+    private CommentService commentService;
     @Autowired
     private MemberRepository memberRepository;
 
@@ -46,6 +50,9 @@ public class BoardController {
         BoardDTO boardDTO = boardService.boardFindById(id);
         System.out.println("boardDTO = " + boardDTO);
         model.addAttribute("board",boardDTO);
+//        commentService 불러오기
+        List<CommentDTO>commentDTOList = commentService.findAllComment(id);
+        model.addAttribute("commentList",commentDTOList);
 
         LikesDTO heart = new LikesDTO();
         // 좋아요가 되어 있는지 찾기위해 게시글번호와 회원번호를 보냄.

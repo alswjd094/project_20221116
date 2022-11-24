@@ -14,8 +14,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <%--icon link--%>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
     <title>main.jsp</title>
     <link rel="stylesheet" href="/resources/css/bootstrap.css">
+<%--jquery--%>
+    <script src="/resources/js/jquery.js"></script>
     <style>
         #main-form {
             width: 450px;
@@ -48,7 +52,7 @@
 <body>
 <jsp:include page="../layout/header.jsp" flush="false"></jsp:include>
 <jsp:include page="../layout/footer.jsp" flush="false"></jsp:include>
-<%--sidebars로 적용--%>
+<%--상세조회에서 적용--%>
 <%--<button onclick="logoutFn()" class="btn btn-danger" >로그아웃</button>--%>
 <%--<button onclick="writing()" class="btn btn-primary">새 게시물 만들기</button>--%>
 <div id="main-form">
@@ -63,7 +67,12 @@
                 </c:if>
                 </tr>
                 <tr>
-           <td><a href="/board/detail?id=${board.id} ">${board.boardContents}</a></td>
+           <td>${board.boardContents}</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="/board/detail?id=${board.id}" style="color:#8E8E8E ">댓글 보기</a>
+                    </td>
                 </tr>
                 <tr class="text-sm-start" id="fontSizeDate">
            <td> <fmt:formatDate value="${board.boardCreatedDate}" pattern="yyyy-MM-dd HH:mm:ss" ></fmt:formatDate></td>
@@ -71,7 +80,6 @@
     </c:forEach>
         </table>
 </div>
-
 </body>
 <script>
     // const logoutFn = () => {
