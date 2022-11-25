@@ -34,7 +34,6 @@
             margin-right: auto;
             /*사용자이름,콘텐츠 등 가운데로 조정*/
             padding: 10px 35px;
-
         }
         * {
             font-family: 'Jua', sans-serif;

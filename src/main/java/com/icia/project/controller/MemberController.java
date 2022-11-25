@@ -2,6 +2,7 @@ package com.icia.project.controller;
 
 import com.icia.project.dto.BoardDTO;
 import com.icia.project.dto.MemberDTO;
+import com.icia.project.service.BoardService;
 import com.icia.project.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,11 +11,15 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 public class MemberController {
 @Autowired
 private MemberService memberService;
+
+@Autowired
+private BoardService boardService;
 
     @GetMapping("/member/save")
     public String saveForm(){
@@ -69,6 +74,12 @@ private MemberService memberService;
         String memberUserName = (String) session.getAttribute("loginUserName");
         MemberDTO myPageForm = memberService.myPageForm(memberUserName);
         model.addAttribute("findByEmail",myPageForm);
+
+        BoardDTO board = new BoardDTO();
+        board.getBoardImage();
+        board.getId();
+        board.getBoardWriter();
+        model.addAttribute("post",board);
         return"member/myPage";
     }
 
@@ -90,6 +101,6 @@ private MemberService memberService;
     public String memberFindById(@RequestParam("id") Long id, Model model){
         MemberDTO member = memberService.memberFindById(id);
         model.addAttribute("member",member);
-        return "redirect:/member/myPage";
+        return "layout/footer";
     }
 }

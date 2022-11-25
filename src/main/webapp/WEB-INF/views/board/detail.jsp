@@ -40,8 +40,6 @@
                 /*가운데 정렬 margin: auto*/
                 margin-left: auto;
                 margin-right: auto;
-                align-items: center;
-                text-align: center;
                 padding: 10px 35px;
             }
             #comment-write{
@@ -54,7 +52,6 @@
             .heart-image{
                 border: none;
                 outline: none;
-
             }
         </style>
 </head>
@@ -93,8 +90,13 @@
 <%--                    <a href="/likes/heart" class="text-dark heart" style="text-decoration-line: none;">--%>
 <%--                        <img id="heartImage" src="/resources/icon/heart.svg">--%>
 <%--                    </a>--%>
+                    <c:if test="${heart.heart==1}">
+                        <button onclick="likesFn()" id="heart" class="heart-image"><img id="heartImages" src="/resources/icon/heart-fill.svg"></button>
+                    </c:if>
+                    <c:if test="${heart.heart==0}">
                     <button onclick="likesFn()" id="heart" class="heart-image"><img id="heartImage" src="/resources/icon/heart.svg"></button>
-                </div>
+                    </c:if>
+                 </div>
             </td>
         </tr>
         <tr>
@@ -191,53 +193,18 @@
             dataType: "json",
             success: function (data){
                console.log(data);
+                <c:if test="${sessionScope.loginUserName !=null}">
                if(data===1){
-                   $('#heartImage').prop("src", "/resources/icon/heart-fill.svg");
+                       $('#heartImage').prop("src", "/resources/icon/heart-fill.svg");
                }else{
                    $('#heartImage').prop("src", "/resources/icon/heart.svg");
                }
+                </c:if>
             },
             error: function (){
                console.log("실패");
             }
         });
     }
-    <%--$(document).ready(function () {--%>
-    <%--    // 좋아요가 있는지 확인한 값을 heartval에 저장--%>
-    <%--    var heartval = '${heart.heart}';--%>
-    <%--    // heartval이 1이면 좋아요가 이미 되있는것이므로 heart-fill.svg를 출력하는 코드--%>
-    <%--    if(heartval>0) {--%>
-    <%--        console.log(heartval);--%>
-    <%--        $('#heart').prop( "src", "/resources/icon/heart-fill.svg");--%>
-    <%--        $('.heart').prop('name',heartval)--%>
-    <%--    }--%>
-    <%--    else {--%>
-    <%--        console.log(heartval);--%>
-    <%--        $('#heart').prop("src","/resources/icon/heart.svg");--%>
-    <%--        $('.heart').prop('name',heartval)--%>
-    <%--    }--%>
-
-    <%--    // 좋아요 버튼을 클릭 시 실행되는 코드--%>
-    <%--    $('.heart').on("click", function () {--%>
-    <%--        var that = $(".heart");--%>
-    <%--        $.ajax({--%>
-    <%--            url :"/likes/heart",--%>
-    <%--            type :"get",--%>
-    <%--            dataType: "json",--%>
-    <%--            data : {--%>
-    <%--                imageId:${board.id},--%>
-    <%--                userId:${sessionScope.loginEmail}--%>
-    <%--            },--%>
-    <%--            success : function(data){--%>
-    <%--                that.prop('name',data);--%>
-    <%--                if(data==1) {--%>
-    <%--                    $('#heart').prop("src","/resources/icon/heart-fill.svg");--%>
-    <%--                } else {--%>
-    <%--                    $('#heart').prop("src", "/resources/icon/heart.svg");--%>
-    <%--                }--%>
-    <%--            }--%>
-    <%--        });--%>
-    <%--    });--%>
-    <%--});--%>
 </script>
 </html>

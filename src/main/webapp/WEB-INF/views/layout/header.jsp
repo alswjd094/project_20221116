@@ -16,7 +16,8 @@
       background-color: white;
     }
     #search-form{
-      margin: auto;
+      margin-right: auto;
+      margin-left: auto;
       width: 50%;
     }
   </style>

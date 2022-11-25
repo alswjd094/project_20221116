@@ -27,11 +27,12 @@
         background: #fff;
         outline: 1px solid #dfdfdf;
         border-radius: 20px 20px 20px 20px;
-        margin-top: 40px;
-        /*가운데 정렬 margin: auto*/
-        margin-left: auto;
-        margin-right: auto;
-        align-items: center;
+        /*margin-top: 40px;*/
+        /*!*가운데 정렬 margin: auto*!*/
+        /*margin-left: auto;*/
+        /*margin-right: auto;*/
+        margin: 100px auto 100px auto;
+        padding: 10px 35px;
 
     }
   </style>
