@@ -71,7 +71,8 @@
      <b>사용자이름</b><input type="text" name="memberUserName" value="${findByEmail.memberUserName}" class="form-control" readonly>
     <b>소개</b><textarea name="memberIntro"  cols="30" rows="10" class="form-control">${findByEmail.memberIntro}</textarea>
       <input type="hidden" name="memberEmail" value="${findByEmail.memberEmail}">
-    <input type="button" value="제출" class="btn btn-primary mt-3" onclick="updateMypage()">
+      <input type="hidden" name="memberPassword" value="${findByEmail.memberPassword}">
+      <input type="button" value="제출" class="btn btn-primary mt-3" onclick="updateMypage()">
   </form>
 </div>
 </body>

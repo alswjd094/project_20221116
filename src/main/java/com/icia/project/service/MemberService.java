@@ -77,7 +77,7 @@ public class MemberService {
             memberRepository.saveFileName(saveMember);
         } else{
             memberDTO.setFileAttached_member(0);
-            memberRepository.save(memberDTO);
+            memberRepository.profileUpdate(memberDTO);
         }
     }
 
