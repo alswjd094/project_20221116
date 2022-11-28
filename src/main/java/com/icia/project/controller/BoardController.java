@@ -63,7 +63,6 @@ public class BoardController {
         // 찾은 정보를 heart로 담아서 보냄
         model.addAttribute("heart",heart);
 
-
         return"board/detail";
     }
 

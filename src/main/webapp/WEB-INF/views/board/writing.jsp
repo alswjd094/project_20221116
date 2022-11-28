@@ -11,25 +11,6 @@
     <title>writing.jsp</title>
     <link rel="stylesheet" href="/resources/css/bootstrap.css">
     <style>
-    <%--파일 업로드이미지와 text 나란히 보기--%>
-    /*    .box1{*/
-    /*        border: 2px #dfdfdf;*/
-    /*        margin-left: 100px;*/
-    /*        margin-right: auto;*/
-    /*        width: 50%;*/
-    /*        height: 180px;*/
-    /*        float: left;*/
-    /*        box-sizing: border-box;*/
-    /*    }*/
-    /*    .box2{*/
-    /*        border: 2px #dfdfdf;*/
-    /*        margin-left: auto;*/
-    /*        margin-right: auto;*/
-    /*        width: 50%;*/
-    /*        height: 180px;*/
-    /*        float: right;*/
-    /*        box-sizing: border-box;*/
-    /*    }*/
     .box1{
         border: 1px solid #dfdfdf;
         margin-left: 100px;

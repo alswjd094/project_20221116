@@ -75,14 +75,16 @@ private BoardService boardService;
         MemberDTO myPageForm = memberService.myPageForm(memberUserName);
         model.addAttribute("findByEmail",myPageForm);
 
-        BoardDTO board = new BoardDTO();
-        board.getBoardImage();
-        board.getId();
-        board.getBoardWriter();
-        model.addAttribute("post",board);
+        //마이페이지에 게시글 가져오기
+//        BoardDTO board = new BoardDTO();
+//        board.getBoardImage();
+//        board.getId();
+//        board.getBoardWriter();
+//        model.addAttribute("post",board);
         return"member/myPage";
     }
 
+//    프로필 수정화면 요청
     @GetMapping("/member/profileUpdate")
     public String profileUpdateForm(Model model,HttpSession session){
         String memberUserName = (String) session.getAttribute("loginUserName");
@@ -91,6 +93,7 @@ private BoardService boardService;
         return "member/profileUpdate";
     }
 
+//    프로필 수정
     @PostMapping("/member/profileUpdate")
     public String profileUpdate(@ModelAttribute MemberDTO memberDTO) throws IOException{
         memberService.profileUpdate(memberDTO);

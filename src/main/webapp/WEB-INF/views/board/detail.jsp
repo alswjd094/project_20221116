@@ -34,6 +34,7 @@
                 height: auto;
                 background: #fff;
                 outline: 1px solid #dfdfdf;
+                /*모서리 둥글게*/
                 border-radius: 20px 20px 20px 20px;
                 margin-top: 100px;
                 margin-bottom: 100px;

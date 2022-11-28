@@ -92,11 +92,11 @@
    <p> 게시물 팔로워 팔로우</p>
     <h3>${findByEmail.memberIntro}</h3>
 </div>
-    <div>
-        <c:if test="${post.boardImage!=null}">
-            <td><img src="${pageContext.request.contextPath}/upload/${post.boardImage}" alt="" width="300" height="300"></td>
-        </c:if>
-    </div>
+<%--    <div>--%>
+<%--        <c:if test="${post.boardImage!=null}">--%>
+<%--            <td><img src="${pageContext.request.contextPath}/upload/${post.boardImage}" alt="" width="300" height="300"></td>--%>
+<%--        </c:if>--%>
+<%--    </div>--%>
 </div>
 </body>
 <script>

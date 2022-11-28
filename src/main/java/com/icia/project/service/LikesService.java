@@ -26,10 +26,6 @@ public class LikesService {
         int result = 0;
         LikesDTO find = likesRepository.findHeart(likesDTO);
         if (find ==null) {
-//           MemberDTO memberDTO = memberRepository.memberFindById(likesDTO.getId());
-//            likesDTO.setUserId(memberDTO.getId());
-//            BoardDTO boardDTO = boardRepository.boardFindById(likesDTO.getId());
-//            likesDTO.setImageId(boardDTO.getId());
             result = likesRepository.heart(likesDTO);
         } else {
             likesRepository.deleteHeart(likesDTO);

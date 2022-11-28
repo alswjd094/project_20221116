@@ -22,7 +22,6 @@ public class MemberDTO {
     private Long memberId;
 
     private MultipartFile memberFile;
-    private MultipartFile memberFileUpdate;
     private String originalFileName_profile;
     private String storedFileName_profile;
     private int fileAttached_member;

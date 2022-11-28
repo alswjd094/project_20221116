@@ -80,6 +80,7 @@
   const updateMypage = () => {
     document.updateForm.submit();
   }
+  //첨부파일 미리보기
   function readURL1(input){
     if(input.files && input.files[0]){
       var reader = new FileReader();
